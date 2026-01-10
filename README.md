@@ -95,8 +95,3 @@ The system is designed to be easily extended with:
 - Improved risk models
 - Operator controls (speed/heading)
 - Event logging or replay
-
----
-
-## Author Notes
-This implementation focuses on **clarity, correctness, and realistic system behavior**, avoiding unnecessary UI complexity or overengineering, in line with the assessment requirements.
