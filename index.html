@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Situational Awareness & Collision Risk System</title>
+    <link rel="stylesheet" href="./CSS/style.css" />
+  </head>
+
+  <body>
+    <div class="layout">
+
+      <!-- Simulation -->
+      <div class="simulation">
+        <div
+          id="emergencyBanner"
+          class="emergency"
+          style="display: none;"
+        >
+          ⚠ COLLISION DETECTED — EMERGENCY STATE
+        </div>
+
+        <canvas id="canvas"></canvas>
+
+        <div class="controls">
+          <button id="startBtn">Start</button>
+          <button id="pauseBtn">Pause</button>
+        </div>
+      </div>
+
+      <!-- Risk Panel -->
+      <div class="panel">
+        <h3>Risk Information</h3>
+        <div id="info"></div>
+
+        <h3 style="margin-top: 20px;">Legend</h3>
+
+        <div class="legend-item">
+          <span class="legend-dot" style="color: #0066ff;">●</span>
+          Own Vessel
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-dot" style="color: #00aa00;">●</span>
+          Safe Target
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-dot" style="color: #ffaa00;">●</span>
+          Warning Target
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-dot" style="color: #ff0000;">●</span>
+          Danger Target
+        </div>
+      </div>
+
+      <!-- Focus Panel -->
+      <div class="panel">
+        <h3>Critical Target</h3>
+        <div id="focusPanel">
+          No immediate threats
+        </div>
+      </div>
+
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

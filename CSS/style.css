@@ -1,0 +1,151 @@
+/* General layout */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  gap: 20px;
+}
+
+/* Simulation area */
+.simulation {
+  display: flex;
+  flex-direction: column;
+}
+
+canvas {
+  border: 1px solid #444;
+  background-color: #ffffff;
+}
+
+/* Controls */
+.controls {
+  margin-top: 10px;
+}
+
+button {
+  padding: 6px 14px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #0066ff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #004ecc;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Side panel */
+.panel {
+  width: 260px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.panel h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 6px;
+}
+
+/* Risk entries */
+.risk-item {
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #ddd;
+  font-size: 14px;
+}
+
+/* Legend */
+.legend-item {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.legend-dot {
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+/* Emergency alert */
+.emergency {
+  background-color: #b00020;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Risk cards */
+.risk-card {
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  background: #f9f9f9;
+  border-left: 6px solid #ccc;
+}
+
+.risk-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.risk-id {
+  font-weight: bold;
+}
+
+.risk-status {
+  font-weight: bold;
+}
+
+.risk-metrics {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Risk levels */
+.risk-safe {
+  border-left-color: #00aa00;
+}
+
+.risk-warning {
+  border-left-color: #ffaa00;
+  background: #fff7e6;
+}
+
+.risk-danger {
+  border-left-color: #ff0000;
+  background: #ffecec;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 300px 300px;
+  gap: 20px;
+}
+
+/* Focus panel */
+#focusPanel {
+  font-size: 15px;
+  padding: 10px;
+}
+
+.focus-danger {
+  color: #b00020;
+  font-weight: bold;
+}
+
