@@ -1,0 +1,20 @@
+{
+  "name": "situational-awareness-collision-risk-system",
+  "version": "1.0.0",
+  "description": "Situational awareness and collision risk simulation with Phase 1 backend skeleton.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "start:api": "node backend/src/server.js"
+  },
+  "keywords": [
+    "simulation",
+    "collision-risk",
+    "situational-awareness"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

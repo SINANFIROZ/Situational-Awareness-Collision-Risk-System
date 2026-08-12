@@ -1,10 +1,9 @@
 # Situational Awareness & Collision Risk System
 
 ## Overview
-This project implements a **local, browser-based situational awareness system** that simulates vessel motion and evaluates collision risk using **CPA (Closest Point of Approach)** and **TCPA (Time to Closest Point of Approach)**.
+This project implements a situational awareness system that simulates vessel motion and evaluates collision risk using **CPA (Closest Point of Approach)** and **TCPA (Time to Closest Point of Approach)**.
 
-The system is designed as a **decision-support tool**, not an autonomous controller.  
-It provides clear visual and textual indications of potential collision threats.
+It remains a browser-based simulation and now includes a **Phase 1 backend skeleton** with a shared risk engine and API surface for production-oriented expansion.
 
 ---
 
@@ -16,7 +15,8 @@ It provides clear visual and textual indications of potential collision threats.
 - Emergency detection on collision
 - Critical target prioritization
 - Interactive identification (hover-to-highlight)
-- Runs completely **locally** (no server, no backend)
+- Shared risk domain module used by both frontend and backend
+- Backend API skeleton for health and risk evaluation
 
 ---
 
@@ -24,60 +24,53 @@ It provides clear visual and textual indications of potential collision threats.
 - HTML5 Canvas
 - Vanilla JavaScript (ES Modules)
 - CSS (no frameworks)
+- Node.js + Express (Phase 1 API skeleton)
 
 ---
 
-## How to Run
-
-1. Download or clone the repository
-2. Open `index.html` directly in a modern web browser
-3. Click **Start** to begin the simulation
-
-No installation, build steps, or server setup required.
-
----
-
-## System Design
-
-### Vessel Model
-Each vessel has:
-- Position (x, y)
-- Speed
-- Heading
-- Derived velocity vector
-
-Motion is updated using basic trigonometry.
+## Phase 1 Architecture
+- `shared/risk-engine.js`: central risk domain logic (TCPA/CPA/classification)
+- `JS/risk.js`: frontend re-export of shared risk engine
+- `backend/src/app.js`: Express app with API routes
+- `backend/src/server.js`: API startup entrypoint
+- `tests/`: Node test suites for domain and API behavior
 
 ---
 
-### Risk Calculation
-- **TCPA** is calculated using relative velocity and position vectors
-- **CPA** is calculated as the minimum distance at TCPA
-- Risk levels are classified using configurable thresholds
+## How to Run Frontend
+1. Clone/download the repository
+2. Open `index.html` in a modern browser
+3. Click **Start** to begin simulation
 
 ---
 
-### Risk Prioritization
-- Multiple vessels can be in DANGER state simultaneously
-- Only **one Critical Target** is highlighted
-- The critical target is selected based on **smallest positive TCPA**
-- This reflects real-world operator prioritization logic
+## How to Run Backend (Phase 1)
+1. Install dependencies:
+   - `npm install`
+2. Start API server:
+   - `npm run start:api`
+3. Health endpoint:
+   - `GET /api/v1/health`
+4. Risk evaluation endpoint:
+   - `POST /api/v1/risk/evaluate`
+
+Example request body for risk evaluation:
+```json
+{
+  "ownShip": { "x": 0, "y": 0, "velocity": { "vx": 0, "vy": 0 } },
+  "target": { "x": 100, "y": 0, "velocity": { "vx": -10, "vy": 0 } }
+}
+```
 
 ---
 
-### Visualization & Interaction
-- Vessels are rendered as vector ship shapes
-- Color-coded risk levels
-- Hovering over a risk entry highlights the corresponding vessel on the canvas
-- Critical target details are shown separately for quick operator focus
+## Testing
+Run:
+- `npm test`
 
----
-
-### Emergency Handling
-- Collision is detected based on proximity thresholds
-- Simulation stops immediately on collision
-- A persistent emergency banner and message are displayed
-- No automatic avoidance actions are taken (operator decision-support only)
+This executes:
+- Risk engine unit tests
+- API behavior tests
 
 ---
 
@@ -85,13 +78,4 @@ Motion is updated using basic trigonometry.
 - Simplified 2D Cartesian plane (not geospatial)
 - No real-world nautical charts or AIS data
 - No autonomous navigation or avoidance logic
-- Intended for demonstration and assessment purposes
-
----
-
-## Extensibility
-The system is designed to be easily extended with:
-- Additional vessels
-- Improved risk models
-- Operator controls (speed/heading)
-- Event logging or replay
+- Backend currently provides a skeleton API (Phase 1 scope)
